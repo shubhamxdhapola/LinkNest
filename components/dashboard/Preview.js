@@ -20,7 +20,7 @@ const Preview = () => {
       <div className="fixed left-[75%] -translate-x-[50%]">
         <div className="mb-5">
           <Link
-            href={`${import.meta.env.NEXT_PUBLIC_HOST}/${user?.username}`}
+            href={`${process.env.NEXT_PUBLIC_HOST}/${user?.username}`}
             target="_blank"
           >
             <p className="text-sm group underline-offset-2 hover:text-card-foreground/80 duration-300 cursor-pointer flex justify-center items-center gap-1 hover:underline">
