@@ -1,17 +1,31 @@
 "use client";
 import { useLinkNest } from "@/context/LinkNestContext";
-import { House, LayoutDashboard, Moon, Search, Share2, Sun } from "lucide-react";
+import {
+  House,
+  LayoutDashboard,
+  Moon,
+  Search,
+  Share2,
+  Sun,
+} from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
+import { toast } from "sonner";
 
 const DashboardNav = () => {
-  
-  const { theme, setTheme } = useLinkNest();
+  const { theme, setTheme, user } = useLinkNest();
   const [search, setSearch] = useState("");
 
   const handleSearch = (e) => {
     e.preventDefault();
     window.open(search, "_blank");
+  };
+
+  const handleCopyUrl = async () => {
+    await navigator.clipboard.writeText(
+      `${process.env.NEXT_PUBLIC_HOST}/${user?.username}`
+    );
+    toast.success("Profile link copied");
   };
 
   const toggleTheme = () => {
@@ -47,7 +61,10 @@ const DashboardNav = () => {
           </button>
         </Link>
         <Link href={"/auth/register"}>
-          <button className="bg-primary text-primary-foreground rounded-full p-4 font-semibold content-center cursor-pointer hover:opacity-80 duration-300">
+          <button
+            className="bg-primary text-primary-foreground rounded-full p-4 font-semibold content-center cursor-pointer hover:opacity-80 duration-300"
+            onClick={handleCopyUrl}
+          >
             <Share2 className="size-5" />
           </button>
         </Link>

@@ -10,6 +10,7 @@ const GetUserByUsername = ({ params }) => {
   const [user, setUser] = useState(null);
   const [links, setLinks] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [hasFetched, setHasFetched] = useState(false);
 
   useEffect(() => {
     async function getUserByUsername() {
@@ -23,10 +24,10 @@ const GetUserByUsername = ({ params }) => {
           setLinks(response?.data?.links);
         }
       } catch (error) {
-        setLoading(false);
-        console.log("Error in username route : ", error)
+        console.log("Error in username route : ", error);
       } finally {
-        setLoading(false)
+        setLoading(false);
+        setHasFetched(true);
       }
     }
     getUserByUsername();
@@ -34,12 +35,12 @@ const GetUserByUsername = ({ params }) => {
 
   const handleCopyURL = async () => {
     await navigator.clipboard.writeText(
-      `${import.meta.env.NEXT_PUBLIC_HOST}/${user?.username}`
+      `${process.env.NEXT_PUBLIC_HOST}/${user?.username}`
     );
     toast.success("Profile link copied");
   };
 
-  if (loading) {
+  if (loading || !hasFetched) {
     return (
       <div className="flex justify-center items-center min-h-screen">
         <Loader className="animate-spin size-6" />
@@ -49,7 +50,7 @@ const GetUserByUsername = ({ params }) => {
 
   return (
     <>
-      {user  ? (
+      {user ? (
         <div className="flex justify-center items-center min-h-screen">
           <div className="bg-background text-foreground border rounded-lg w-[95vw] md:w-[320px] px-4 py-6 scrollbar-hide max-h-[95vh] overflow-scroll hide-scrollbar relative">
             <span

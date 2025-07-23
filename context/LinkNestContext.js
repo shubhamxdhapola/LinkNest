@@ -15,24 +15,24 @@ export const LinkNestProvider = ({ children }) => {
     setTheme(localStorage.getItem("theme") || 'dark');
   }, []);
 
-  useEffect(() => {
-    async function getDashboard() {
-      setLoading(true);
-      try {
-        const response = await axios.get("/api/dashboard");
-        setLoading(false);
-        if (response.status === 200) {
-          setUser(response?.data?.user);
-          setLinks(response?.data?.links);
-        }
-      } catch (error) {
-        console.log("Error in LinkNestContext", error);
-      } finally {
-        setLoading(false);
-      }
-    }
-    getDashboard();
-  }, []);
+  // useEffect(() => {
+  //   async function getDashboard() {
+  //     setLoading(true);
+  //     try {
+  //       const response = await axios.get("/api/dashboard");
+  //       setLoading(false);
+  //       if (response.status === 200) {
+  //         setUser(response?.data?.user);
+  //         setLinks(response?.data?.links);
+  //       }
+  //     } catch (error) {
+  //       console.log("Error in LinkNestContext", error);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   }
+  //   getDashboard();
+  // }, []);
   // console.log('user in provider', user)
   // console.log('provider called', user)
 

@@ -58,8 +58,8 @@ const Login = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen">
-      <div className="backdrop-blur-2xl border rounded-lg shadow-lg p-6 bg-card text-card-foreground">
+    <div className="flex justify-center items-center min-h-screen p-4">
+      <div className="border rounded-lg shadow-lg p-4 md:p-6 bg-card text-card-foreground">
         <FormHeader
           heading="Welcome Back to LinkNest"
           subHeading="Login to curate, customize, and share your digital space."

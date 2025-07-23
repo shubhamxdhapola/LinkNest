@@ -60,7 +60,7 @@ const ProfileCard = ({ setIsProfileEditDialogOpen }) => {
 
   async function handleCopyURL() {
     await navigator.clipboard.writeText(
-      `http://localhost:3000/${user?.username}`
+      `${process.env.NEXT_PUBLIC_HOST}/${user?.username}`
     );
     toast.success("Copied to clipboard");
   }

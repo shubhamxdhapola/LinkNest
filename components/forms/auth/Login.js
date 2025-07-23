@@ -37,10 +37,10 @@ const LoginForm = ({
       </div>
 
       <button
-        className={`auth-form-button ${
+        className={`bg-primary text-primary-foreground w-full py-2.5 rounded-lg mt-2 font-semibold text-sm duration-300 ${
           isSubmitting
             ? "cursor-not-allowed opacity-50"
-            : "hover:bg-primary/90 cursor-pointer"
+            : "hover:bg-primary/80 cursor-pointer"
         }`}
         disabled={isSubmitting}
       >

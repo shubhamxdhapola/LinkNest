@@ -13,7 +13,7 @@ const RegisterForm = ({
   formData,
 }) => {
   return (
-    <form onSubmit={handleOnSubmit} className="min-w-[40vw]">
+    <form onSubmit={handleOnSubmit} className="lg:min-w-[40vw]">
       <div className="my-6">
         <ProfilePhotoSelector
           uploading={uploading}
@@ -23,7 +23,7 @@ const RegisterForm = ({
         />
       </div>
 
-      <div className="flex gap-4 items-center mb-5">
+      <div className="flex flex-col sm:flex-row gap-4 sm:items-center mb-5">
         <div className="flex-1 relative flex items-center">
           <Input
             Icon={User}
@@ -64,7 +64,7 @@ const RegisterForm = ({
         <textarea
           name="bio"
           id="bio"
-          className="auth-input-box"
+          className="placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground bg-input/30 border-input w-full rounded-md border px-4 py-3 text-sm outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[2px]"
           placeholder="Short and sweet bio goes here"
           rows={3}
           maxLength={100}
@@ -85,10 +85,10 @@ const RegisterForm = ({
       </div>
 
       <button
-        className={`auth-form-button ${
+        className={`bg-primary text-primary-foreground w-full py-2.5 rounded-lg mt-2 font-semibold text-sm duration-300 ${
           isSubmitting || uploading
             ? "cursor-not-allowed opacity-50"
-            : "hover:bg-primary/90 cursor-pointer"
+            : "hover:bg-primary/80 cursor-pointer"
         }`}
         disabled={uploading || isSubmitting}
       >

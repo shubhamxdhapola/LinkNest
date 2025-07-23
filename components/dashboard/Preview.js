@@ -1,14 +1,5 @@
 import { useLinkNest } from "@/context/LinkNestContext";
-import {
-  ArrowBigRight,
-  ChevronRight,
-  Copy,
-  EllipsisVertical,
-  Globe,
-  Link2,
-  MoveRight,
-  User,
-} from "lucide-react";
+import { ChevronRight, User } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -29,7 +20,7 @@ const Preview = () => {
             </p>
           </Link>
         </div>
-        <div className="bg-background border-2 rounded-xl overflow-y-scroll shadow-xl py-5 px-5 scrollbar-hide  w-[310px] min-h-[70vh] max-h-[70vh] ">
+        <div className="bg-background border-2 rounded-xl overflow-y-scroll shadow-xl py-5 px-5 scrollbar-hide  w-[310px] min-h-[70vh] max-h-[70vh]">
           <div className="text-center space-y-3 mt-8">
             <div className="relative h-20 w-20 border bg-card rounded-full text-card-foreground mx-auto">
               {user?.profilePic ? (

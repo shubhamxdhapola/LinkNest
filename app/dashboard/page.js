@@ -12,11 +12,12 @@ import { useLinkNest } from "@/context/LinkNestContext";
 import axios from "axios";
 
 const Dashboard = () => {
-  
+
   const [isAddLinkDialogOpen, setIsAddLinkDialogOpen] = useState(false);
   const [isProfileEditDialogOpen, setIsProfileEditDialogOpen] = useState(false);
-  const { setUser, setLinks } = useLinkNest();
   const [loading, setLoading] = useState(false);
+  const [hasFetched, setHasFetched] = useState(false);
+  const { setUser, setLinks } = useLinkNest();
 
   useEffect(() => {
     async function getDashboard() {
@@ -32,12 +33,13 @@ const Dashboard = () => {
         console.log("Error in LinkNestContext", error);
       } finally {
         setLoading(false);
+        setHasFetched(true);
       }
     }
     getDashboard();
   }, []);
 
-  if (loading) {
+  if (loading || !hasFetched) {
     return (
       <div className="flex justify-center items-center min-h-screen">
         <Loader className="animate-spin size-6" />

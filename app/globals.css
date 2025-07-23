@@ -23,15 +23,6 @@ textarea {
   }
 }
 
-
-.auth-input-box {
-  @apply placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground bg-input/30 border-input w-full rounded-md border px-4 py-3 text-sm outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[2px];
-}
-
-.auth-form-button {
-  @apply bg-primary text-primary-foreground w-full py-2.5 rounded-lg mt-2 font-semibold text-sm;
-}
-
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
