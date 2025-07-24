@@ -14,10 +14,9 @@ import { useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
-import moment from "moment";
 
 const ProfileCard = ({ setIsProfileEditDialogOpen }) => {
+
   const { user, setUser, setLinks } = useLinkNest();
   const profileDialogRef = useRef(null);
   const [isOptionMenuOpen, setIsOptionMenuOpen] = useState(false);
@@ -51,7 +50,6 @@ const ProfileCard = ({ setIsProfileEditDialogOpen }) => {
       setLinks([]);
       router.push("/");
     } catch (error) {
-      setLoggingOut(false);
       toast.error(error?.response?.data?.message);
     } finally {
       setLoggingOut(false);
@@ -66,9 +64,9 @@ const ProfileCard = ({ setIsProfileEditDialogOpen }) => {
   }
 
   return (
-    <div className="sm:flex items-center p-6 rounded-lg border relative">
-      <div className="flex gap-6 items-center justify-center flex-col sm:flex-row">
-        <div className="relative h-21 w-21 border bg-card rounded-full text-card-foreground">
+    <div className="sm:flex items-center justify-between p-4 sm:p-6 rounded-lg border relative">
+      <div className="flex gap-4 sm:gap-6 items-center">
+        <div className="relative h-20 w-20 sm:h-21 sm:w-21 border bg-card rounded-full text-card-foreground">
           {user?.profilePic ? (
             <Image
               src={user?.profilePic}
@@ -82,7 +80,7 @@ const ProfileCard = ({ setIsProfileEditDialogOpen }) => {
             </div>
           )}
         </div>
-        <div className="space-y-1 text-center sm:text-left">
+        <div className="space-y-1">
           <p className="font-semibold">
             <span>{user?.name}</span>
           </p>
@@ -91,26 +89,20 @@ const ProfileCard = ({ setIsProfileEditDialogOpen }) => {
         </div>
       </div>
 
-      <div className="pe-2 cursor-pointer absolute right-2 top-2 sm:top-1/2 sm:-translate-y-1/2">
+      <div className="sm:pe-2 cursor-pointer absolute top-2 right-4 sm:right-3 sm:top-1/2 sm:-translate-y-1/2">
         <div className="flex items-center justify-center">
-        <Tooltip>
-          <TooltipTrigger>
-            <span
-              className="hover:opacity-80 duration-300"
-              onClick={() => setIsOptionMenuOpen(!isOptionMenuOpen)}
-            >
-              {isOptionMenuOpen ? (
-                <X className="size-5 hover:cursor-pointer" />
-              ) : (
-                <Ellipsis className="cursor-pointer" />
-              )}
-            </span>
-          </TooltipTrigger>
-          <TooltipContent>More</TooltipContent>
-        </Tooltip>
+          <span
+            className="hover:opacity-80 duration-300"
+            onClick={() => setIsOptionMenuOpen(!isOptionMenuOpen)}
+          >
+            {isOptionMenuOpen ? (
+              <X className="size-5 hover:cursor-pointer" />
+            ) : (
+              <Ellipsis className="cursor-pointer" />
+            )}
+          </span>
         </div>
         <div
-
           ref={profileDialogRef}
           className={`bg-card absolute top-0 -left-50 rounded text-sm border shadow-md overflow-hidden duration-300 ${
             isOptionMenuOpen ? "opacity-100" : "opacity-0 hidden"

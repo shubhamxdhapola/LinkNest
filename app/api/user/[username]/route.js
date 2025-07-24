@@ -1,4 +1,3 @@
-import verifyToken from "@/lib/auth/verifyToken";
 import connectDB from "@/lib/config/db";
 import { Link } from "@/models/link.model";
 import { User } from "@/models/user.model";

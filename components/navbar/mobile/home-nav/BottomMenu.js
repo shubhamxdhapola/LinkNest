@@ -5,7 +5,6 @@ import {
   LogOut,
   Moon,
   Search,
-  SearchX,
   Sun,
   User,
 } from "lucide-react";
@@ -57,7 +56,6 @@ const BottomMenu = ({
       setUser(null);
       setLinks([]);
     } catch (error) {
-      setLoggingOut(false);
       toast.error(error?.response?.data?.message);
     } finally {
       setLoggingOut(false);

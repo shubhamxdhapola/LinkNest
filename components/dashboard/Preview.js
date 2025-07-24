@@ -2,12 +2,11 @@ import { useLinkNest } from "@/context/LinkNestContext";
 import { ChevronRight, User } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 
 const Preview = () => {
   const { user, links } = useLinkNest();
   return (
-    <div className="hidden md:inline-block w-1/2">
+    <div className="hidden lg:inline-block w-1/2">
       <div className="fixed left-[75%] -translate-x-[50%]">
         <div className="mb-5">
           <Link
@@ -20,7 +19,7 @@ const Preview = () => {
             </p>
           </Link>
         </div>
-        <div className="bg-background border-2 rounded-xl overflow-y-scroll shadow-xl py-5 px-5 scrollbar-hide  w-[310px] min-h-[70vh] max-h-[70vh]">
+        <div className="bg-background border-2 rounded-xl overflow-y-scroll shadow-xl py-5 px-5 scrollbar-hide w-[310px] min-h-[70vh] max-h-[70vh]">
           <div className="text-center space-y-3 mt-8">
             <div className="relative h-20 w-20 border bg-card rounded-full text-card-foreground mx-auto">
               {user?.profilePic ? (
@@ -44,7 +43,7 @@ const Preview = () => {
             </div>
           </div>
           <div className="flex flex-col gap-4 items-center justify-center mt-10">
-            {links?.length > 0 &&
+            {links?.length > 0 ? (
               links?.map((link) => (
                 <Link
                   key={link?._id}
@@ -54,7 +53,12 @@ const Preview = () => {
                 >
                   <span>{link?.title}</span>
                 </Link>
-              ))}
+              ))
+            ) : (
+              <div className="text-muted-foreground text-center mt-8">
+                No links available
+              </div>
+            )}
           </div>
         </div>
       </div>

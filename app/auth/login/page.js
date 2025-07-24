@@ -20,7 +20,10 @@ const Login = () => {
   const handleOnChange = (e) => {
     setFormData((prevData) => ({
       ...prevData,
-      [e.target.name]: e.target.value,
+      [e.target.name]:
+        e.target.name === "username"
+          ? e.target.value.toLowerCase()
+          : e.target.value,
     }));
   };
 
@@ -48,7 +51,6 @@ const Login = () => {
           toast.error(response.data.message);
         }
       } catch (error) {
-        setIsSubmitting(false);
         console.log("Error in login page : ", error);
         toast.error(error.response.data.message);
       } finally {
@@ -64,14 +66,12 @@ const Login = () => {
           heading="Welcome Back to LinkNest"
           subHeading="Login to curate, customize, and share your digital space."
         />
-
         <LoginForm
           handleOnSubmit={handleOnSubmit}
           handleOnChange={handleOnChange}
           formData={formData}
           isSubmitting={isSubmitting}
         />
-
         <FormFooter
           message="Don't have an account?"
           url="/auth/register"

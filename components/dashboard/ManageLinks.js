@@ -14,7 +14,7 @@ const ManageLinks = () => {
   const [isUpdateLinkDialogOpen, setIsUpdateLinkDialogOpen] = useState(false);
 
   const handleEditLink = async (id) => {
-    const linkToBeUpdated = links.filter((link) => link._id === id)[0]
+    const linkToBeUpdated = links.filter((link) => link._id === id)[0];
     setFormData({ title: linkToBeUpdated?.title, url: linkToBeUpdated?.url });
     setIsUpdateLinkDialogOpen(true);
     setEditingLinkId(id);
@@ -29,7 +29,7 @@ const ManageLinks = () => {
     <>
       <p className="mt-8 mb-5 text-lg font-semibold">My Links</p>
       <div>
-        {links && links.length > 0 && (
+        {links && links.length > 0 ? (
           <div className="flex flex-col gap-4">
             {links.map((link) => (
               <LinkCard
@@ -39,6 +39,10 @@ const ManageLinks = () => {
                 handleDeleteLink={handleDeleteLink}
               />
             ))}
+          </div>
+        ) : (
+          <div className="text-muted-foreground text-center mt-8">
+            No links available
           </div>
         )}
       </div>
@@ -50,7 +54,6 @@ const ManageLinks = () => {
         setEditingLinkId={setEditingLinkId}
         editingLinkId={editingLinkId}
       />
-
       <DeleteConfirmationDialog
         isDeleteDialogOpen={isDeleteDialogOpen}
         setIsDeleteDialogOpen={setIsDeleteDialogOpen}

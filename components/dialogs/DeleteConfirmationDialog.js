@@ -26,8 +26,6 @@ const DeleteConfirmationDialog = ({
         toast.error(response.data.message);
       }
     } catch (error) {
-      setDeleting(false);
-      setDeleting(false);
       console.log("Error in deleting link : ", error);
       toast.error(error.response.data.message);
     } finally {
@@ -38,7 +36,7 @@ const DeleteConfirmationDialog = ({
     <div>
       {isDeleteDialogOpen && <Overlay />}
       <div
-        className={`bg-background p-6 shadow-lg border rounded-lg fixed z-20 max-w-[40vw] mx-auto top-[50%] left-[50%] -translate-x-[55%] -translate-y-[55%] ${
+        className={`bg-background p-4 md:p-6 shadow-lg border rounded-lg fixed z-50 w-[92vw] md:max-w-[60vw] lg:max-w-[40vw] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-h-[90dvh] overflow-scroll scrollbar-hide ${
           isDeleteDialogOpen ? "opacity-100" : "opacity-0 hidden"
         } duration-300`}
       >

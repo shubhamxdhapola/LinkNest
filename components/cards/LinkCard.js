@@ -1,7 +1,6 @@
 import { Calendar, Copy, Edit, Trash2 } from "lucide-react";
 import moment from "moment";
 import Link from "next/link";
-import React from "react";
 import { toast } from "sonner";
 
 import {
@@ -11,6 +10,7 @@ import {
 } from "@/components/ui/tooltip";
 
 const LinkCard = ({ link, handleEditLink, handleDeleteLink }) => {
+  
   const handleCopy = async (url) => {
     await navigator.clipboard.writeText(url);
     toast.success("Copied to clipboard");
@@ -54,17 +54,19 @@ const LinkCard = ({ link, handleEditLink, handleDeleteLink }) => {
           <Copy className="size-4 " />
           <p className="text-sm">Copy</p>
         </div>
-        <Tooltip>
-          <TooltipTrigger>
-            <div className="md:flex items-center gap-2 text-muted-foreground hover:text-card-foreground duration-300 cursor-pointer hidden">
-              <Calendar className="size-4 " />
-              <p className="text-sm ">
-                {moment(link.createdAt).format("Do MMM YYYY")}
-              </p>
-            </div>
-          </TooltipTrigger>
-          <TooltipContent>Created On</TooltipContent>
-        </Tooltip>
+        <div className="hidden md:inline-block ">
+          <Tooltip>
+            <TooltipTrigger>
+              <div className="flex items-center gap-2 text-muted-foreground hover:text-card-foreground duration-300 cursor-pointer">
+                <Calendar className="size-4 " />
+                <p className="text-sm ">
+                  {moment(link.createdAt).format("Do MMM YYYY")}
+                </p>
+              </div>
+            </TooltipTrigger>
+            <TooltipContent>Created On</TooltipContent>
+          </Tooltip>
+        </div>
       </div>
     </div>
   );

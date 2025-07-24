@@ -9,8 +9,9 @@ import axios from "axios";
 import MobileNav from "@/components/navbar/mobile/home-nav/MobileNav";
 
 export default function Home() {
-  const [loading, setLoading] = useState(false);
+
   const { setUser } = useLinkNest();
+  const [loading, setLoading] = useState(false);
   const [hasfetched, setHasFetched] = useState(false);
 
   useEffect(() => {
@@ -52,8 +53,6 @@ export default function Home() {
             <p className="mt-3 text-muted-foreground max-w-5xl md:max-w-xl lg:max-w-3xl mx-auto text-sm md:text-md text-justify md:text-center">
               Combine all the things you’re working on—projects, passions,
               social profiles, and side hustles—into a single shareable page.
-              {/* It’s designed to help creators, freelancers, and entrepreneurs
-              make an impression online fast. */}
             </p>
             <div className="flex flex-col md:flex-row items-start gap-10 md:gap-5 mt-10 justify-center">
               <Link href={"/dashboard"}>

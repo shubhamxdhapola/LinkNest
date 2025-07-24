@@ -57,7 +57,6 @@ const UpdateProfile = ({
           toast.error(response.data.message);
         }
       } catch (error) {
-        setIsSubmitting(false);
         console.log("Error in updating profile : ", error);
         toast.error(error.response.data.message);
       } finally {
@@ -70,7 +69,7 @@ const UpdateProfile = ({
     <>
       {isProfileEditDialogOpen && <Overlay />}
       <div
-        className={`border rounded-lg shadow-lg p-6 bg-card text-card-foreground fixed z-20 top-[50%] left-[50%] -translate-x-[55%] -translate-y-[55%] ${
+        className={`bg-card p-4 md:p-6 shadow-lg border rounded-lg fixed z-50 w-[92vw] md:max-w-[60vw] lg:max-w-[45vw] xl:max-w-[40vw] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-h-[90vh] overflow-scroll scrollbar-hide ${
           isProfileEditDialogOpen ? "opacity-100" : "opacity-0 hidden"
         }`}
       >
@@ -85,7 +84,7 @@ const UpdateProfile = ({
           <X className="size-4.5 " />
         </span>
 
-        <form onSubmit={handleOnSubmit} className="min-w-[40vw]">
+        <form onSubmit={handleOnSubmit} className="">
           <div className="my-6">
             <ProfilePhotoSelector
               uploading={uploading}
@@ -96,7 +95,7 @@ const UpdateProfile = ({
             />
           </div>
 
-          <div className="flex gap-4 items-center mb-5">
+          <div className="flex flex-col md:flex-row gap-4 md:items-center mb-5">
             <div className="flex-1 relative flex items-center">
               <Input
                 Icon={User}
@@ -125,7 +124,7 @@ const UpdateProfile = ({
             <textarea
               name="bio"
               id="bio"
-              className="auth-input-box"
+              className="placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground bg-input/30 border-input w-full rounded-md border px-4 py-3 text-sm outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[2px]"
               placeholder="Short and sweet bio goes here"
               rows={3}
               maxLength={100}
@@ -146,7 +145,7 @@ const UpdateProfile = ({
           </div>
 
           <button
-            className={`auth-form-button ${
+            className={`bg-primary text-primary-foreground w-full py-2.5 rounded-lg mt-2 font-semibold text-sm duration-300 ${
               isSubmitting || uploading
                 ? "cursor-not-allowed opacity-50"
                 : "hover:bg-primary/90 cursor-pointer"
@@ -158,10 +157,10 @@ const UpdateProfile = ({
             ) : isSubmitting ? (
               <span className="flex justify-center items-center gap-2">
                 <Loader2 className="animate-spin size-5" />{" "}
-                <span>Updating</span>
+                <span>Saving</span>
               </span>
             ) : (
-              "Update Profile"
+              "Save Changes"
             )}
           </button>
         </form>

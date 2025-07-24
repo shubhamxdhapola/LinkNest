@@ -52,8 +52,8 @@ const Dashboard = () => {
     <>
       <DashboardNav />
       <MobileDashboardNav />
-      <div className="md:max-w-[90vw] mx-auto py-8 lg:flex justify-center md:gap-10">
-        <div className="px-4 sm:px-8 md:w-1/2">
+      <div className="md:max-w-[70vw] lg:max-w-[95vw] xl:max-w-[90vw] mx-auto py-8 lg:flex justify-center gap-5 xl:gap-10">
+        <div className="px-4 sm:px-8 lg:px-4 xl:px-8 lg:w-1/2">
           <ProfileCard
             setIsProfileEditDialogOpen={setIsProfileEditDialogOpen}
           />
@@ -69,7 +69,6 @@ const Dashboard = () => {
               onClick={() => setIsAddLinkDialogOpen(true)}
             >
               Add Link
-              <Link2 className="size-5" />
             </button>
 
             {isAddLinkDialogOpen && <Overlay />}

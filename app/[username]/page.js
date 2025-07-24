@@ -52,7 +52,7 @@ const GetUserByUsername = ({ params }) => {
     <>
       {user ? (
         <div className="flex justify-center items-center min-h-screen">
-          <div className="bg-background text-foreground border rounded-lg w-[95vw] md:w-[320px] px-4 py-6 scrollbar-hide max-h-[95vh] overflow-scroll hide-scrollbar relative">
+          <div className="bg-background text-foreground border rounded-lg w-[95vw] sm:w-[60vw] md:w-[330px] px-4 py-6 scrollbar-hide max-h-[95vh] overflow-scroll hide-scrollbar relative">
             <span
               className="absolute right-4 top-4 hover:opacity-80 duration-300 cursor-pointer"
               onClick={handleCopyURL}
@@ -82,18 +82,22 @@ const GetUserByUsername = ({ params }) => {
               </div>
             </div>
             <div className="flex flex-col gap-4 items-center justify-center mt-10">
-              {links.length > 0 &&
+              {links.length > 0 ? (
                 links.map((link) => (
                   <Link
+                    key={link._id}
                     href={link.url}
                     target="_blank"
                     className="text-sm hover:text-muted-foreground bg-card border px-4 py-4 rounded-md w-full text-center hover:bg-background duration-300 group cursor-pointer flex justify-center items-center"
                   >
-                    {/* <Link2 className="size-5" /> */}
                     <span>{link.title}</span>
-                    {/* <Copy className="size-4" /> */}
                   </Link>
-                ))}
+                ))
+              ) : (
+                <div className="text-muted-foreground text-center mt-8">
+                  No links available
+                </div>
+              )}
             </div>
           </div>
         </div>

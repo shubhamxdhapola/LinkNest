@@ -1,24 +1,7 @@
-import Overlay from "@/components/dashboard/Overlay";
 import { useLinkNest } from "@/context/LinkNestContext";
-import axios from "axios";
-import {
-  Eye,
-  House,
-  Loader2,
-  LogOut,
-  Moon,
-  ScanEye,
-  Search,
-  SearchX,
-  Share2,
-  Sun,
-  User,
-} from "lucide-react";
-import Image from "next/image";
+import { House, Moon, ScanEye, Search, Sun } from "lucide-react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { toast } from "sonner";
 import Preview from "./Preview";
 
 const BottomMenu = ({
@@ -54,9 +37,9 @@ const BottomMenu = ({
   };
 
   const handleSetPreview = () => {
-    setPreview(true)
-    setIsMenuOpen(false)
-  }
+    setPreview(true);
+    setIsMenuOpen(false);
+  };
 
   return (
     <>

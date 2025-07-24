@@ -1,5 +1,14 @@
 "use client";
-import { Key, KeyRound, Loader2, LogIn, LogOut, Moon, Search, Sun, User, UserPlus, UserRound, UserRoundPlus } from "lucide-react";
+import {
+  KeyRound,
+  Loader2,
+  LogOut,
+  Moon,
+  Search,
+  Sun,
+  User,
+  UserRoundPlus,
+} from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -14,11 +23,19 @@ const HomeNav = () => {
   const [loggingOut, setLoggingOut] = useState(false);
   const router = useRouter();
 
+  const validateForm = () => {
+    if (!search.trim()) return toast.error("Please enter a username");
+    return true;
+  };
+
   const handleSearch = (e) => {
     e.preventDefault();
-    window.open(search, "_blank");
+    const isFormOkay = validateForm();
+    if (isFormOkay === true) {
+      window.open(search, "_blank");
+    }
   };
-  
+
   const toggleTheme = () => {
     const newTheme = theme === "dark" ? "light" : "dark";
     setTheme(newTheme);
@@ -34,7 +51,6 @@ const HomeNav = () => {
       setUser(null);
       setLinks([]);
     } catch (error) {
-      setLoggingOut(false);
       toast.error(error?.response?.data?.message);
     } finally {
       setLoggingOut(false);
@@ -106,7 +122,9 @@ const HomeNav = () => {
               ) : (
                 <>
                   <span className="hidden lg:inline-block">Logout</span>
-                  <span className="lg:hidden"><LogOut /></span>
+                  <span className="lg:hidden">
+                    <LogOut />
+                  </span>
                 </>
               )}
             </button>
@@ -116,13 +134,17 @@ const HomeNav = () => {
             <Link href={"/auth/login"}>
               <button className="bg-primary text-primary-foreground rounded-full px-4 lg:px-8 py-4 font-semibold content-center cursor-pointer hover:opacity-80 duration-300">
                 <span className="hidden lg:inline-block">Login</span>
-                <span className="lg:hidden"><KeyRound /></span>
+                <span className="lg:hidden">
+                  <KeyRound />
+                </span>
               </button>
             </Link>
             <Link href={"/auth/register"}>
               <button className="bg-secondary text-secondary-foreground border rounded-full px-4 lg:px-8 py-4 font-semibold content-center cursor-pointer hover:opacity-80 duration-300">
-                      <span className="hidden lg:inline-block">Register</span>
-                <span className="lg:hidden"><UserRoundPlus /></span>
+                <span className="hidden lg:inline-block">Register</span>
+                <span className="lg:hidden">
+                  <UserRoundPlus />
+                </span>
               </button>
             </Link>
           </>

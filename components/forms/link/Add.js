@@ -48,14 +48,13 @@ const AddLink = ({ isAddLinkDialogOpen, setIsAddLinkDialogOpen }) => {
       setIsSubmitting(false);
       if (response.status === 201) {
         toast.success(response.data.message);
-        setLinks((prevLinks) => [...prevLinks, response?.data?.link]);
+        setLinks((prevLinks) => [ response?.data?.link, ...prevLinks,]);
         setFormData(defaultFormData);
         setIsAddLinkDialogOpen(false);
       } else {
         toast.error(response.data.message);
       }
     } catch (error) {
-      setIsSubmitting(false);
       console.log("Error in creating link : ", error);
       toast.error(error.response.data.message);
     } finally {
@@ -65,7 +64,7 @@ const AddLink = ({ isAddLinkDialogOpen, setIsAddLinkDialogOpen }) => {
 
   return (
     <div
-      className={`bg-card p-6 shadow-lg border rounded-lg fixed z-20 max-w-[40vw] mx-auto top-[50%] left-[50%] -translate-x-[55%] -translate-y-[55%] ${
+      className={`bg-card p-4 md:p-6 shadow-lg border rounded-lg fixed z-50 w-[92vw] md:max-w-[60vw] lg:max-w-[40vw] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-h-[90dvh] overflow-scroll scrollbar-hide ${
         isAddLinkDialogOpen ? "opacity-100" : "opacity-0 hidden"
       } duration-300`}
     >
@@ -76,7 +75,7 @@ const AddLink = ({ isAddLinkDialogOpen, setIsAddLinkDialogOpen }) => {
         />
 
         <span
-          className="absolute -top-3 -right-3 text-muted-foreground cursor-pointer hover:text-card-foreground duration-300"
+          className="absolute -top-2 -right-2 md:-top-3 md:-right-3 text-muted-foreground cursor-pointer hover:text-card-foreground duration-300"
           onClick={restFormAndCloseDialog}
         >
           <X className="size-4.5 " />

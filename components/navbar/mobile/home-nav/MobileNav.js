@@ -6,10 +6,9 @@ import BottomMenu from "./BottomMenu";
 import { useRef, useState } from "react";
 
 const MobileNav = () => {
-  
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchBarOpen, setIsSearchBarOpen] = useState(false);
-  const inputRef = useRef()
+  const inputRef = useRef();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -27,7 +26,12 @@ const MobileNav = () => {
             <span>LinkNest</span>
           </div>
         </Link>
-        <div onClick={toggleMenu}>{isMenuOpen ? <X /> : <AlignRight />}</div>
+        <div
+          className="cursor-pointer duration-300 hover:opacity-80"
+          onClick={toggleMenu}
+        >
+          {isMenuOpen ? <X /> : <AlignRight />}
+        </div>
       </nav>
 
       <SearchBar

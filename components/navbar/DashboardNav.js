@@ -16,9 +16,17 @@ const DashboardNav = () => {
   const { theme, setTheme, user } = useLinkNest();
   const [search, setSearch] = useState("");
 
+  const validateForm = () => {
+    if (!search.trim()) return toast.error("Please enter a username");
+    return true;
+  };
+
   const handleSearch = (e) => {
     e.preventDefault();
-    window.open(search, "_blank");
+    const isFormOkay = validateForm();
+    if (isFormOkay === true) {
+      window.open(search, "_blank");
+    }
   };
 
   const handleCopyUrl = async () => {
@@ -35,7 +43,7 @@ const DashboardNav = () => {
   };
 
   return (
-    <div className="px-12 backdrop-blur-2xl sticky top-0 text-card-foreground py-5 md:flex justify-between items-center gap-20 z-10 hidden">
+    <div className="px-12 backdrop-blur-2xl sticky top-0 text-card-foreground py-4 xl:py-5 lg:flex justify-between items-center gap-15 xl:gap-20 z-10 hidden">
       <div className="logo font-semibold text-xl flex items-center gap-2">
         <LayoutDashboard className="size-5" />
         <span>Dashboard</span>

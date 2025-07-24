@@ -6,10 +6,9 @@ import BottomMenu from "./BottomMenu";
 import SearchBar from "./SearchBar";
 
 const MobileDashboardNav = () => {
-  
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchBarOpen, setIsSearchBarOpen] = useState(false);
-  const inputRef = useRef()
+  const inputRef = useRef();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -18,7 +17,7 @@ const MobileDashboardNav = () => {
   return (
     <>
       <nav
-        className={`md:hidden flex backdrop-blur-2xl sticky top-0 h-16 text-card-foreground px-4 py-4 justify-between items-center border-b duration-300 z-30 ${
+        className={`lg:hidden flex backdrop-blur-2xl sticky top-0 h-16 text-card-foreground px-4 py-4 md:px-6 md:py-6 justify-between items-center border-b duration-300 z-30 ${
           isSearchBarOpen ? "-translate-y-[100vh]" : "translate-y-0"
         }`}
       >
@@ -28,7 +27,12 @@ const MobileDashboardNav = () => {
             <span>Dashboard</span>
           </div>
         </Link>
-        <div onClick={toggleMenu}>{isMenuOpen ? <X /> : <AlignRight />}</div>
+        <div
+          className="cursor-pointer duration-300 hover:opacity-80"
+          onClick={toggleMenu}
+        >
+          {isMenuOpen ? <X /> : <AlignRight />}
+        </div>
       </nav>
 
       <SearchBar

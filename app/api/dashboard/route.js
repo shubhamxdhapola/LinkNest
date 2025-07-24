@@ -16,7 +16,7 @@ export async function GET(req) {
     if (!user) {
       return NextResponse.json({ message: "User not found" }, { status: 404 });
     }
-    const links = await Link.find({ user: user._id });
+    const links = await Link.find({ user: user._id }).sort({createdAt : -1})
     return NextResponse.json({ user, links }, { status: 200 });
   } catch (error) {
     console.log("Error in get profile route : ", error);

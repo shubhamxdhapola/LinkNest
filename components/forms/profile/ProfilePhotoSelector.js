@@ -52,8 +52,7 @@ const ProfilePhotoSelector = ({
       }
     } catch (error) {
       console.log("Error in image uplaoding : ", error);
-      toast.error("Something went wrong");
-      setUploading(false);
+      toast.error("Something went wrong");      
     } finally {
       setUploading(false);
     }

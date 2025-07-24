@@ -1,5 +1,4 @@
 import { useLinkNest } from "@/context/LinkNestContext";
-import { ChevronRight, User, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -9,18 +8,6 @@ const Preview = ({ setPreview }) => {
   return (
     <div className="fixed bg-black/50 h-screen w-full inset-0 backdrop-blur-2xl z-50">
       <div className="fixed left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 z-50">
-        {/* <div className="mb-5">
-          <Link
-            href={`${process.env.NEXT_PUBLIC_HOST}/${user?.username}`}
-            target="_blank"
-          >
-            <p className="text-sm group underline-offset-2 hover:text-card-foreground/80 duration-300 cursor-pointer flex justify-center items-center gap-1 hover:underline">
-              <span>View your LinkNest</span>
-              <ChevronRight className="size-4 group-hover:translate-x-1 duration-300" />
-            </p>
-          </Link>
-        </div> */}
-
         <span
           className="absolute top-4 right-4 hover:opacity-80 duration-300"
           onClick={() => setPreview(false)}
@@ -51,7 +38,7 @@ const Preview = ({ setPreview }) => {
             </div>
           </div>
           <div className="flex flex-col gap-4 items-center justify-center mt-10">
-            {links?.length > 0 &&
+            {links?.length > 0 ? (
               links?.map((link) => (
                 <Link
                   key={link?._id}
@@ -61,7 +48,12 @@ const Preview = ({ setPreview }) => {
                 >
                   <span>{link?.title}</span>
                 </Link>
-              ))}
+              ))
+            ) : (
+              <div className="text-muted-foreground text-center mt-8">
+                No links available
+              </div>
+            )}
           </div>
         </div>
       </div>

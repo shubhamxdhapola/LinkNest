@@ -1,4 +1,3 @@
-import React from "react";
 import ProfilePhotoSelector from "../profile/ProfilePhotoSelector";
 import Input from "@/components/inputs/Input";
 import { AtSign, Loader2, Lock, Mail, User } from "lucide-react";

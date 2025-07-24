@@ -8,7 +8,6 @@ import FormFooter from "@/components/footer/FormFooter";
 import RegisterForm from "@/components/forms/auth/Register";
 
 const Register = () => {
-  
   const defaultFormData = {
     name: "",
     username: "",
@@ -25,7 +24,10 @@ const Register = () => {
   const handleOnChange = (e) => {
     setFormData((prevData) => ({
       ...prevData,
-      [e.target.name]: e.target.value,
+      [e.target.name]:
+        e.target.name === "username"
+          ? e.target.value.toLowerCase()
+          : e.target.value,
     }));
   };
 
@@ -33,6 +35,8 @@ const Register = () => {
     if (!formData.name.trim()) return toast.error("Name is required");
     if (!formData.username.trim()) return toast.error("Username is required");
     if (!formData.password.trim()) return toast.error("Password is required");
+    if (!/^(?!\.)(?!.*\.\.)[a-zA-Z0-9._]{3,20}(?<!\.)$/.test(formData.username))
+      return toast.error("Username format is invalid");
     return true;
   };
 
@@ -52,7 +56,6 @@ const Register = () => {
           toast.error(response.data.message);
         }
       } catch (error) {
-        setIsSubmitting(false);
         console.log("Error in register page : ", error);
         toast.error(error.response.data.message);
       } finally {
@@ -68,7 +71,6 @@ const Register = () => {
           heading="Build Your LinkNest Profile"
           subHeading=" Start organizing your links in one beautiful, shareable space."
         />
-
         <RegisterForm
           handleOnSubmit={handleOnSubmit}
           handleOnChange={handleOnChange}
@@ -78,7 +80,6 @@ const Register = () => {
           setFormData={setFormData}
           formData={formData}
         />
-
         <FormFooter
           message="Already have an account?"
           url="/auth/login"

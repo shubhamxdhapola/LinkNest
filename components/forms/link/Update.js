@@ -69,7 +69,6 @@ const UpdateLink = ({
         toast.error(response.data.message);
       }
     } catch (error) {
-      setIsSubmitting(false);
       console.log("Error in updating link : ", error);
       toast.error(error.response.data.message);
     } finally {
@@ -82,7 +81,7 @@ const UpdateLink = ({
     <>
       {isUpdateLinkDialogOpen && <Overlay />}
       <div
-        className={`bg-card p-6 shadow-lg border rounded-lg fixed z-20 max-w-[40vw] mx-auto top-[50%] left-[50%] -translate-x-[55%] -translate-y-[55%] ${
+        className={`bg-card p-4 md:p-6 shadow-lg border rounded-lg fixed z-50 w-[92vw] md:max-w-[60vw] lg:max-w-[40vw] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-h-[90dvh] overflow-scroll scrollbar-hide ${
           isUpdateLinkDialogOpen ? "opacity-100" : "opacity-0 hidden"
         } duration-300`}
       >
@@ -92,7 +91,7 @@ const UpdateLink = ({
             subHeading="Make changes to your existing link details."
           />
           <span
-            className="absolute -top-3 -right-3 text-muted-foreground cursor-pointer hover:text-card-foreground duration-300"
+            className="absolute -top-2 -right-2 md:-top-3 md:-right-3  text-muted-foreground cursor-pointer hover:text-card-foreground duration-300"
             onClick={resetFormAndCloseDialog}
           >
             <X className="size-4.5 " />
@@ -136,10 +135,10 @@ const UpdateLink = ({
               {isSubmitting ? (
                 <span className="flex justify-center items-center gap-2">
                   <Loader2 className="animate-spin size-5" />{" "}
-                  <span>Updating</span>
+                  <span>Saving</span>
                 </span>
               ) : (
-                "Update Link"
+                "Save Changes"
               )}
             </button>
           </form>
