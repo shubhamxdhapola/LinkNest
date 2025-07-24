@@ -31,7 +31,7 @@ const Dashboard = () => {
           setLinks(response?.data?.links);
         }
       } catch (error) {
-        console.log("Error in LinkNestContext", error);
+        console.log("Error in getting dashboard data", error);
       } finally {
         setLoading(false);
         setHasFetched(true);
