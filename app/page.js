@@ -54,7 +54,7 @@ export default function Home() {
               Combine all the things you’re working on—projects, passions,
               social profiles, and side hustles—into a single shareable page.
             </p>
-            <div className="flex flex-col md:flex-row items-start gap-10 md:gap-5 mt-10 justify-center">
+            <div className="flex flex-col md:flex-row items-start gap-10 md:gap-10 mt-10 justify-center">
               <Link href={"/dashboard"}>
                 <button className="bg-primary border text-primary-foreground rounded-full cursor-pointer px-6 py-4 font-semibold text-sm hover:bg-primary/80 duration-300">
                   Go to Dashboard
