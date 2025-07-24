@@ -10,6 +10,7 @@ import Preview from "@/components/dashboard/Preview";
 import ProfileCard from "@/components/cards/ProfileCard";
 import { useLinkNest } from "@/context/LinkNestContext";
 import axios from "axios";
+import MobileDashboardNav from "@/components/navbar/mobile/dashboard-nav/MobileDashboardNav";
 
 const Dashboard = () => {
 
@@ -50,8 +51,9 @@ const Dashboard = () => {
   return (
     <>
       <DashboardNav />
-      <div className="max-w-[90vw] mx-auto py-8 flex justify-center items-start gap-10">
-        <div className="w-1/2">
+      <MobileDashboardNav />
+      <div className="md:max-w-[90vw] mx-auto py-8 lg:flex justify-center md:gap-10">
+        <div className="px-4 sm:px-8 md:w-1/2">
           <ProfileCard
             setIsProfileEditDialogOpen={setIsProfileEditDialogOpen}
           />

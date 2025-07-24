@@ -35,7 +35,7 @@ const DashboardNav = () => {
   };
 
   return (
-    <div className="px-12 backdrop-blur-2xl sticky top-0 text-card-foreground py-5 flex justify-between items-center gap-20 z-10 ">
+    <div className="px-12 backdrop-blur-2xl sticky top-0 text-card-foreground py-5 md:flex justify-between items-center gap-20 z-10 hidden">
       <div className="logo font-semibold text-xl flex items-center gap-2">
         <LayoutDashboard className="size-5" />
         <span>Dashboard</span>
@@ -60,14 +60,14 @@ const DashboardNav = () => {
             <House className="size-5" />
           </button>
         </Link>
-        <Link href={"/auth/register"}>
-          <button
-            className="bg-primary text-primary-foreground rounded-full p-4 font-semibold content-center cursor-pointer hover:opacity-80 duration-300"
-            onClick={handleCopyUrl}
-          >
-            <Share2 className="size-5" />
-          </button>
-        </Link>
+
+        <button
+          className="bg-primary text-primary-foreground rounded-full p-4 font-semibold content-center cursor-pointer hover:opacity-80 duration-300"
+          onClick={handleCopyUrl}
+        >
+          <Share2 className="size-5" />
+        </button>
+
         <button
           className="bg-primary text-primary-foreground rounded-full p-4 font-semibold content-center cursor-pointer hover:opacity-80 duration-300"
           onClick={toggleTheme}

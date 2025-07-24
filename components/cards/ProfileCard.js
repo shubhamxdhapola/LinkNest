@@ -66,8 +66,8 @@ const ProfileCard = ({ setIsProfileEditDialogOpen }) => {
   }
 
   return (
-    <div className="flex justify-between items-center p-6 rounded-lg border">
-      <div className="flex gap-6 items-center">
+    <div className="sm:flex items-center p-6 rounded-lg border relative">
+      <div className="flex gap-6 items-center justify-center flex-col sm:flex-row">
         <div className="relative h-21 w-21 border bg-card rounded-full text-card-foreground">
           {user?.profilePic ? (
             <Image
@@ -82,15 +82,16 @@ const ProfileCard = ({ setIsProfileEditDialogOpen }) => {
             </div>
           )}
         </div>
-        <div className="space-y-1">
-          <p className="font-semibold flex items-center gap-2">
+        <div className="space-y-1 text-center sm:text-left">
+          <p className="font-semibold">
             <span>{user?.name}</span>
           </p>
           <p className="text-sm text-muted-foreground">{user?.username}</p>
           <p className="text-sm text-muted-foreground">{user?.bio}</p>
         </div>
       </div>
-      <div className="pe-1 cursor-pointer relative">
+
+      <div className="pe-2 cursor-pointer absolute right-2 top-2 sm:top-1/2 sm:-translate-y-1/2">
         <div className="flex items-center justify-center">
         <Tooltip>
           <TooltipTrigger>

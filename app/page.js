@@ -6,7 +6,7 @@ import { Loader } from "lucide-react";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import axios from "axios";
-import MobileNav from "@/components/navbar/mobile/MobileNav";
+import MobileNav from "@/components/navbar/mobile/home-nav/MobileNav";
 
 export default function Home() {
   const [loading, setLoading] = useState(false);

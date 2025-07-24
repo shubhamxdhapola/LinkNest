@@ -32,8 +32,8 @@ const SearchBar = ({ setIsSearchBarOpen, isSearchBarOpen, inputRef }) => {
   return (
     <div
       ref={searchRef}
-      className={`fixed top-4 duration-300 w-[92vw] -translate-x-1/2 ${
-        isSearchBarOpen ? "left-1/2" : "-translate-x-[100vw]"
+      className={`fixed top-4 duration-300 w-[92vw] left-1/2 -translate-x-1/2 ${
+        isSearchBarOpen ? "translate-y-0" : "-translate-y-[100vw]"
       }`}
     >
       <form onSubmit={handleSearch}>

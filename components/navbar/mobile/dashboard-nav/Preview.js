@@ -1,15 +1,15 @@
 import { useLinkNest } from "@/context/LinkNestContext";
-import { ChevronRight, User } from "lucide-react";
+import { ChevronRight, User, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const Preview = () => {
+const Preview = ({ setPreview }) => {
   const { user, links } = useLinkNest();
   return (
-    <div className="hidden md:inline-block w-1/2">
-      <div className="fixed left-[75%] -translate-x-[50%]">
-        <div className="mb-5">
+    <div className="fixed bg-black/50 h-screen w-full inset-0 backdrop-blur-2xl z-50">
+      <div className="fixed left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 z-50">
+        {/* <div className="mb-5">
           <Link
             href={`${process.env.NEXT_PUBLIC_HOST}/${user?.username}`}
             target="_blank"
@@ -19,8 +19,15 @@ const Preview = () => {
               <ChevronRight className="size-4 group-hover:translate-x-1 duration-300" />
             </p>
           </Link>
-        </div>
-        <div className="bg-background border-2 rounded-xl overflow-y-scroll shadow-xl py-5 px-5 scrollbar-hide  w-[310px] min-h-[70vh] max-h-[70vh]">
+        </div> */}
+
+        <span
+          className="absolute top-4 right-4 hover:opacity-80 duration-300"
+          onClick={() => setPreview(false)}
+        >
+          <X className="size-4" />
+        </span>
+        <div className="bg-background border-2 rounded-xl overflow-y-scroll shadow-xl py-5 px-5 scrollbar-hide w-[90vw] sm:w-[70vw] md:w-[310px] lg:w-[330px] xl:w-[350px] max-h-[90vh]">
           <div className="text-center space-y-3 mt-8">
             <div className="relative h-20 w-20 border bg-card rounded-full text-card-foreground mx-auto">
               {user?.profilePic ? (
