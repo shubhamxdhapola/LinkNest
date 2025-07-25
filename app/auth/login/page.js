@@ -46,6 +46,7 @@ const Login = () => {
         if (response.status === 200) {
           toast.success(response.data.message);
           setFormData(defaultFormData);
+          router.refresh()
           router.push("/dashboard");
         } else {
           toast.error(response.data.message);
