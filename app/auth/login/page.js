@@ -46,9 +46,10 @@ const Login = () => {
         if (response.status === 200) {
           toast.success(response.data.message);
           setFormData(defaultFormData);
-          router.refresh()
-          router.push("/dashboard");
+          window.location.href = '/dashboard';
+          console.log("how are")
         } else {
+          console.log("heyyy")
           toast.error(response.data.message);
         }
       } catch (error) {
