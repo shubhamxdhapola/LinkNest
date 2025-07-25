@@ -47,9 +47,7 @@ const Login = () => {
           toast.success(response.data.message);
           setFormData(defaultFormData);
           window.location.href = '/dashboard';
-          console.log("how are")
-        } else {
-          console.log("heyyy")
+        } else {          
           toast.error(response.data.message);
         }
       } catch (error) {

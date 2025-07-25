@@ -16,7 +16,6 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 
 const ProfileCard = ({ setIsProfileEditDialogOpen }) => {
-
   const { user, setUser, setLinks } = useLinkNest();
   const profileDialogRef = useRef(null);
   const [isOptionMenuOpen, setIsOptionMenuOpen] = useState(false);
@@ -48,7 +47,7 @@ const ProfileCard = ({ setIsProfileEditDialogOpen }) => {
       toast.success(response?.data?.message);
       setUser(null);
       setLinks([]);
-      router.push("/");
+      window.location.href = "/";
     } catch (error) {
       toast.error(error?.response?.data?.message);
     } finally {

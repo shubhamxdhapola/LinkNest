@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { Link2, Loader } from "lucide-react";
+import { Loader } from "lucide-react";
 import DashboardNav from "@/components/navbar/DashboardNav";
 import UpdateProfile from "@/components/forms/profile/Update";
 import Overlay from "@/components/dashboard/Overlay";

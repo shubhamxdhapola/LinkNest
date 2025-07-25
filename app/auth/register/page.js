@@ -51,7 +51,7 @@ const Register = () => {
         if (response.status === 201) {
           toast.success(response.data.message);
           setFormData(defaultFormData);
-          router.push("/dashboard");
+          window.location.href = "/dashboard";
         } else {
           toast.error(response.data.message);
         }
