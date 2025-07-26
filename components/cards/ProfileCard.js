@@ -13,14 +13,12 @@ import {
 import { useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 import axios from "axios";
-import { useRouter } from "next/navigation";
 
 const ProfileCard = ({ setIsProfileEditDialogOpen }) => {
   const { user, setUser, setLinks } = useLinkNest();
   const profileDialogRef = useRef(null);
   const [isOptionMenuOpen, setIsOptionMenuOpen] = useState(false);
   const [loggingOut, setLoggingOut] = useState(false);
-  const router = useRouter();
 
   useEffect(() => {
     function hideOptionMenu(e) {
@@ -59,7 +57,7 @@ const ProfileCard = ({ setIsProfileEditDialogOpen }) => {
     await navigator.clipboard.writeText(
       `${process.env.NEXT_PUBLIC_HOST}/${user?.username}`
     );
-    toast.success("Copied to clipboard");
+    toast.success("Profile link copied");
   }
 
   return (

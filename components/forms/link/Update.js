@@ -69,7 +69,6 @@ const UpdateLink = ({
         toast.error(response.data.message);
       }
     } catch (error) {
-      console.log("Error in updating link : ", error);
       toast.error(error.response.data.message);
     } finally {
       setIsSubmitting(false);

@@ -56,7 +56,6 @@ const Register = () => {
           toast.error(response.data.message);
         }
       } catch (error) {
-        console.log("Error in register page : ", error);
         toast.error(error.response.data.message);
       } finally {
         setIsSubmitting(false);

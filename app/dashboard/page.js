@@ -11,6 +11,7 @@ import ProfileCard from "@/components/cards/ProfileCard";
 import { useLinkNest } from "@/context/LinkNestContext";
 import axios from "axios";
 import MobileDashboardNav from "@/components/navbar/mobile/dashboard-nav/MobileDashboardNav";
+import { toast } from "sonner";
 
 const Dashboard = () => {
 
@@ -31,7 +32,7 @@ const Dashboard = () => {
           setLinks(response?.data?.links);
         }
       } catch (error) {
-        console.log("Error in getting dashboard data", error);
+        toast.error(error.response.data.message);
       } finally {
         setLoading(false);
         setHasFetched(true);

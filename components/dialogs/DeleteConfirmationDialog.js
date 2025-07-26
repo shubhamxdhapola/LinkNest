@@ -26,7 +26,6 @@ const DeleteConfirmationDialog = ({
         toast.error(response.data.message);
       }
     } catch (error) {
-      console.log("Error in deleting link : ", error);
       toast.error(error.response.data.message);
     } finally {
       setDeleting(false);

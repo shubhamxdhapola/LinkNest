@@ -55,7 +55,6 @@ const AddLink = ({ isAddLinkDialogOpen, setIsAddLinkDialogOpen }) => {
         toast.error(response.data.message);
       }
     } catch (error) {
-      console.log("Error in creating link : ", error);
       toast.error(error.response.data.message);
     } finally {
       setIsSubmitting(false);

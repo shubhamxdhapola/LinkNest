@@ -3,7 +3,7 @@ import { FaLinkedinIn, FaFacebookF, FaInstagram } from "react-icons/fa";
 
 export const SOCIAL_HANDLES = [
   {
-    socialHandleUrl: "https://www.linkedin.com",
+    socialHandleUrl: "https://www.linkedin.com/in/shubhamdhapola/",
     icon: FaLinkedinIn,
   },
   {
@@ -11,7 +11,7 @@ export const SOCIAL_HANDLES = [
     icon: FaInstagram,
   },
   {
-    socialHandleUrl: "https://www.facebook.com",
+    socialHandleUrl: "https://github.com/shubhamxdhapola",
     icon: FaGithub ,
   },
   {

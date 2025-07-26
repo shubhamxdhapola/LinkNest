@@ -1,6 +1,6 @@
 import ProfilePhotoSelector from "../profile/ProfilePhotoSelector";
 import Input from "@/components/inputs/Input";
-import { AtSign, Loader2, Lock, Mail, User } from "lucide-react";
+import { AtSign, Loader2, Lock, User } from "lucide-react";
 
 const RegisterForm = ({
   handleOnSubmit,

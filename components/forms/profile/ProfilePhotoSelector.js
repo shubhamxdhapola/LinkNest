@@ -50,8 +50,7 @@ const ProfilePhotoSelector = ({
           profilePic: result.data.secure_url,
         }));
       }
-    } catch (error) {
-      console.log("Error in image uplaoding : ", error);
+    } catch (error) {      
       toast.error("Something went wrong");      
     } finally {
       setUploading(false);

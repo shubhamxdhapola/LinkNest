@@ -24,7 +24,7 @@ const GetUserByUsername = ({ params }) => {
           setLinks(response?.data?.links);
         }
       } catch (error) {
-        console.log("Error in username route : ", error);
+        toast.error(error.response.data.message);
       } finally {
         setLoading(false);
         setHasFetched(true);
@@ -52,7 +52,7 @@ const GetUserByUsername = ({ params }) => {
     <>
       {user ? (
         <div className="flex justify-center items-center min-h-screen">
-          <div className="bg-background text-foreground border rounded-lg w-[95vw] sm:w-[60vw] md:w-[330px] px-4 py-6 scrollbar-hide max-h-[95vh] overflow-scroll hide-scrollbar relative">
+          <div className="bg-background text-foreground border rounded-lg w-[95vw] sm:w-[60vw] md:w-[330px] px-4 py-6 scrollbar-hide max-h-[90vh] overflow-scroll hide-scrollbar relative">
             <span
               className="absolute right-4 top-4 hover:opacity-80 duration-300 cursor-pointer"
               onClick={handleCopyURL}

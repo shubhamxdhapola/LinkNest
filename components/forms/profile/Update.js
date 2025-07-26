@@ -57,7 +57,6 @@ const UpdateProfile = ({
           toast.error(response.data.message);
         }
       } catch (error) {
-        console.log("Error in updating profile : ", error);
         toast.error(error.response.data.message);
       } finally {
         setIsSubmitting(false);

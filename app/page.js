@@ -7,9 +7,9 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import axios from "axios";
 import MobileNav from "@/components/navbar/mobile/home-nav/MobileNav";
+import { toast } from "sonner";
 
 export default function Home() {
-
   const { setUser } = useLinkNest();
   const [loading, setLoading] = useState(false);
   const [hasfetched, setHasFetched] = useState(false);
@@ -24,7 +24,7 @@ export default function Home() {
           setUser(response?.data?.user);
         }
       } catch (error) {
-        console.log("Error in getUser", error);
+        toast.error(error.response.data.message);
       } finally {
         setHasFetched(true);
         setLoading(false);
