@@ -7,7 +7,6 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import axios from "axios";
 import MobileNav from "@/components/navbar/mobile/home-nav/MobileNav";
-import { toast } from "sonner";
 
 export default function Home() {
   const { setUser } = useLinkNest();
@@ -24,7 +23,7 @@ export default function Home() {
           setUser(response?.data?.user);
         }
       } catch (error) {
-        toast.error(error.response.data.message);
+        console.log("Unauthorized");
       } finally {
         setHasFetched(true);
         setLoading(false);
@@ -32,6 +31,10 @@ export default function Home() {
     }
     getUser();
   }, []);
+
+  const handleNavigation = () => {
+    window.location.href = '/dashboard'
+  }
 
   if (loading || !hasfetched) {
     return (
@@ -55,11 +58,9 @@ export default function Home() {
               social profiles, and side hustles—into a single shareable page.
             </p>
             <div className="flex flex-col md:flex-row items-start gap-10 md:gap-10 mt-10 justify-center">
-              <Link href={"/dashboard"}>
-                <button className="bg-primary border text-primary-foreground rounded-full cursor-pointer px-6 py-4 font-semibold text-sm hover:bg-primary/80 duration-300">
-                  Go to Dashboard
-                </button>
-              </Link>
+              <button className="bg-primary border text-primary-foreground rounded-full cursor-pointer px-6 py-4 font-semibold text-sm hover:bg-primary/80 duration-300" onClick={handleNavigation}>
+                Go to Dashboard
+              </button>
               <div className="flex items-center space-x-4 md:-space-x-2 ">
                 {SOCIAL_HANDLES.map((item, index) => (
                   <Link
